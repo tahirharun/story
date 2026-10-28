@@ -6,6 +6,7 @@ import {
   PenLine,
   Search,
   BookOpen,
+  ArrowUpRight,
 } from "lucide-react";
 
 function Navbar() {
@@ -22,19 +23,24 @@ function Navbar() {
   return (
     <header className="navbar">
       <div className="navbar-container">
-        {/* Logo */}
+
+        {/* LOGO */}
         <Link to="/" className="navbar-logo" onClick={closeMenu}>
           <span className="logo-icon">
-            <BookOpen size={24} />
+            <BookOpen size={23} strokeWidth={2.2} />
           </span>
 
           <span className="logo-text">
             Story<span>Verse</span>
+            <small>EVERY VOICE MATTERS</small>
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className={`navbar-links ${menuOpen ? "active" : ""}`}>
+        {/* NAVIGATION LINKS */}
+        <nav
+          className={`navbar-links ${menuOpen ? "active" : ""}`}
+          aria-label="Main navigation"
+        >
           <Link to="/" onClick={closeMenu}>
             Home
           </Link>
@@ -51,7 +57,7 @@ function Navbar() {
             About
           </a>
 
-          {/* Mobile Write Button */}
+          {/* MOBILE WRITE BUTTON */}
           <button
             type="button"
             className="mobile-write-button"
@@ -59,16 +65,20 @@ function Navbar() {
           >
             <PenLine size={17} />
             Write a story
+            <ArrowUpRight size={16} />
           </button>
         </nav>
 
-        {/* Right Actions */}
+        {/* ACTION BUTTONS */}
         <div className="navbar-actions">
           <button
             type="button"
             className="search-button"
             aria-label="Search stories"
-            onClick={() => navigate("/")}
+            onClick={() => {
+              closeMenu();
+              navigate("/#stories");
+            }}
           >
             <Search size={19} />
           </button>
@@ -79,20 +89,22 @@ function Navbar() {
             onClick={handleWriteStory}
           >
             <PenLine size={17} />
-            <span>Write a story</span>
+            <span>Start writing</span>
+            <ArrowUpRight size={16} className="write-arrow" />
           </button>
 
-          {/* Mobile Menu Toggle */}
+          {/* MOBILE MENU TOGGLE */}
           <button
             type="button"
             className="menu-toggle"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-label={menuOpen ? "Close navigation" : "Open navigation"}
             aria-expanded={menuOpen}
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() => setMenuOpen((open) => !open)}
           >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            {menuOpen ? <X size={23} /> : <Menu size={23} />}
           </button>
         </div>
+
       </div>
     </header>
   );

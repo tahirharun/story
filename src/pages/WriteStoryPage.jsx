@@ -9,7 +9,6 @@ ImagePlus,
 Save,
 Send,
 } from "lucide-react";
-import "../WriteStory.css";
 
 function WriteStoryPage() {
 const [title, setTitle] = useState("");
