@@ -32,17 +32,14 @@ content,
 updatedAt: new Date().toISOString(),
 };
 
-```
 localStorage.setItem("storyverse-draft", JSON.stringify(draft));
 setMessage("Draft saved on this device!");
-```
 
 }
 
 function loadDraft() {
 const saved = localStorage.getItem("storyverse-draft");
 
-```
 if (saved) {
   const draft = JSON.parse(saved);
   setTitle(draft.title || "");
@@ -51,14 +48,12 @@ if (saved) {
   setContent(draft.content || "");
   setMessage("Your previous draft has been restored.");
 }
-```
 
 }
 
 function submitStory(event) {
 event.preventDefault();
 
-```
 if (!title.trim() || !content.trim()) {
   setMessage("Please add a title and write your story first.");
   return;
@@ -71,14 +66,12 @@ setMessage(
     ? "Your journalism draft is saved. Editorial submission will be available when we connect the backend."
     : "Your story draft is saved. Publishing will be available when we connect the backend."
 );
-```
 
 }
 
 return ( <div className="write-page"> <header className="write-header"> <Link to="/" className="write-brand"> <BookOpen size={23} /> <span>
 Story<span>Verse</span> </span> </Link>
 
-```
     <div className="write-header-actions">
       <button
         type="button"
